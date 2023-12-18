@@ -32,18 +32,13 @@ function getBackValues(line) {
 }
 
 function findValue(values) {
-    let result
     const lookups = [...LETTERS, ...DIGITS]
     for (let value of values) {
         for (let lookup of lookups) {
-            if (value.includes(lookup)) {
-                if (lookup.length > 1) {
-                    return LETTERS.indexOf(lookup) + 1
-                } else return Number.parseInt(lookup)
-            }
+            if (value.includes(lookup) && lookup.length > 1) return LETTERS.indexOf(lookup) + 1
+            if (value.includes(lookup) && lookup.length == 1) return Number.parseInt(lookup)
         }
     }
-    return result
 }
 
 function solution2() {
@@ -52,8 +47,5 @@ function solution2() {
         const ending = findValue(getBackValues(line))
         return beginning * 10 + ending
     })
-    console.log(newInput)
     return newInput.reduce((a, b) => a + b, 0)
 }
-
-console.log(solution2())

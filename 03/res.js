@@ -22,22 +22,33 @@ function findNumericalValues(string) {
     return values
 }
 
-function relativePosition(index) {
+function relativePosition(indexStart, indexEnd) {
     // top/bottom/left/right/middle
     let boundaries = ""
-    if (index == 0) boundaries += "T" 
-    if (index >= WIDTH * (WIDTH - 1) ) boundaries += "B"
-    if (index % WIDTH == 0) boundaries += "L"
-    if (index % WIDTH == WIDTH - 1) boundaries += "R"
+    if (indexStart == 0) boundaries += "T"
+    if (indexStart >= WIDTH * (WIDTH - 1)) boundaries += "B"
+    if (indexStart % WIDTH == 0) boundaries += "L"
+    if (indexEnd % WIDTH == WIDTH - 1) boundaries += "R"
     return boundaries.length < 1 ? "M" : boundaries
 }
 
-function neighbors(indexStart, indexEnd) {
+function neighbors(iS, iE) {
+    const position = relativePosition(iS, iE)
+    const neighbours = {
+        A: input.slice(iS - WIDTH - 1, iS - WIDTH),
+        B: input.slice(iS - WIDTH, iE - WIDTH + 1),
+        C: input.slice(iE - WIDTH + 1, iE - WIDTH + 2),
+        D: input.slice(iS - 1, iS),
+        F: input.slice(iE + 1, iE + 2),
+        G: input.slice(iS + WIDTH - 1, iS + WIDTH),
+        H: input.slice(iS + WIDTH, iE + WIDTH + 1),
+        I: input.slice(iE + WIDTH + 1, iE + WIDTH + 2),
+    }
     
 }
 
 // width = 4
-// 00 01 02 03
-// 04 05 06 07
-// 08 09 10 11
+// 00 01 02 03     A B C
+// 04 05 06 07     D E F
+// 08 09 10 11     G H I
 // 12 13 14 15

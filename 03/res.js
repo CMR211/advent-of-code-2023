@@ -22,3 +22,22 @@ function findNumericalValues(string) {
     return values
 }
 
+function relativePosition(index) {
+    // top/bottom/left/right/middle
+    let boundaries = ""
+    if (index == 0) boundaries += "T" 
+    if (index >= WIDTH * (WIDTH - 1) ) boundaries += "B"
+    if (index % WIDTH == 0) boundaries += "L"
+    if (index % WIDTH == WIDTH - 1) boundaries += "R"
+    return boundaries.length < 1 ? "M" : boundaries
+}
+
+function neighbors(indexStart, indexEnd) {
+    
+}
+
+// width = 4
+// 00 01 02 03
+// 04 05 06 07
+// 08 09 10 11
+// 12 13 14 15

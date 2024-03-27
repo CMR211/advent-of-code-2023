@@ -70,14 +70,3 @@ const res0 = findNumericalValues(input).filter((x) => x.symbol.length > 0)
 const res1 = res0.reduce((acc, curr) => (acc += curr.value), 0)
 console.log(res1)
 
-const a = Array.from(input.matchAll(/\*/g)).map((match) => {
-    return {
-        startIndex: match["index"],
-        endIndex: match["index"] + match["0"].length,
-    }
-}).map(match => {
-    return 
-}
-
-)
-console.log(a)
